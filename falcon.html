@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Falcon Station Pvt Ltd - Fresh Water Supply</title>
+  <style>
+    /* Fonts Import */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap');
+
+    /* Variables */
+    :root {
+      --clr-primary-dark: #05386b;
+      --clr-primary: #379683;
+      --clr-primary-light: #8ee4af;
+      --clr-accent: #5cdb95;
+      --clr-accent-dark: #379683;
+      --clr-gray-dark: #333;
+      --clr-gray-light: #edf5e1;
+      --clr-gray-lightest: #f7fbf8;
+      --clr-white: #fff;
+      --transition-fast: 0.3s ease;
+      --border-radius: 18px;
+      --shadow-light: rgba(0,0,0,0.15);
+      --shadow-bold: rgba(0,0,0,0.25);
+      --max-width: 840px;
+      --focus-outline: 3px solid var(--clr-accent);
+    }
+
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      background: linear-gradient(135deg, #379683 15%, #8ee4af 85%);
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      user-select: none;
+      color: var(--clr-primary-dark);
+      min-height: 100vh;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      position: relative;
+      line-height: 1.58;
+      background-attachment: fixed;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 60px 16px 80px;
+    }
+
+    /* Background decorative shapes */
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.25;
+      z-index: 0;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      animation: bgPulse 30s ease-in-out infinite alternate;
+    }
+    body::before {
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle at center, #5cdb95, transparent 70%);
+      top: 8%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+    body::after {
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle at center, #379683, transparent 80%);
+      bottom: 8%;
+      right: 6%;
+      animation-delay: 15s;
+    }
+    @keyframes bgPulse {
+      0% {
+        opacity: 0.2;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0.35;
+        transform: scale(1.1);
+      }
+    }
+
+    main {
+      background: var(--clr-gray-light);
+      max-width: var(--max-width);
+      width: 90%;
+      margin: 0 auto;
+      border-radius: var(--border-radius);
+      box-shadow:
+        1px 1px 7px var(--shadow-light),
+        12px 18px 45px var(--shadow-bold);
+      padding: 3.8rem 3.4rem 3.8rem 3.4rem;
+      position: relative;
+      z-index: 10;
+      overflow: hidden;
+      color: var(--clr-primary-dark);
+      animation: fadeSlideIn 1.3s ease forwards;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+      box-sizing: border-box;
+      /* Remove forced full viewport height */
+      min-height: auto;
+    }
+
+    @keyframes fadeSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Headers */
+    h1, h2, h3 {
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: 1.4px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      text-shadow:
+        0 1px 1px rgba(255 255 255 / 0.65),
+        0 2px 12px rgba(0 0 0 / 0.05);
+      user-select:none;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 6vw + 1rem, 4rem);
+      color: var(--clr-primary-dark);
+      text-align: center;
+      margin-bottom: 1.4rem;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3vw + 1rem, 2.4rem);
+      color: var(--clr-primary);
+      border-bottom: 3.7px solid var(--clr-accent);
+      padding-bottom: 0.38rem;
+      transition: border-color var(--transition-fast);
+      cursor: default;
+    }
+    h2:hover, h2:focus {
+      border-color: var(--clr-primary-dark);
+      outline-offset: 5px;
+    }
+
+    h3 {
+      font-size: clamp(1.15rem, 2vw + 1rem, 1.35rem);
+      color: var(--clr-accent);
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Body text */
+    p, ul {
+      font-size: 1.08rem;
+      line-height: 1.6;
+      color: var(--clr-primary-dark);
+      max-width: 720px;
+      margin-bottom: 1.8em;
+      word-break: break-word;
+      text-shadow: 0 0 1px rgba(0,0,0,0.02);
+    }
+
+    ul {
+      padding-left: 2.8em;
+      list-style-type: disc;
+    }
+    li {
+      margin-bottom: 0.64em;
+    }
+
+    em {
+      font-style: italic;
+      color: var(--clr-accent-dark);
+      font-weight: 600;
+    }
+
+    /* Interactive links */
+    a {
+      color: var(--clr-primary);
+      font-weight: 700;
+      outline-offset: 3px;
+      transition: color var(--transition-fast);
+      position: relative;
+      text-decoration: none;
+    }
+    a::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -3px;
+      left: 0;
+      background-color: var(--clr-accent);
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.35s ease;
+    }
+    a:hover::after,
+    a:focus-visible::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+    a:focus-visible {
+      outline: var(--focus-outline);
+      outline-offset: 4px;
+      border-radius: 5px;
+    }
+
+    /* Contact Section */
+    .contact-info {
+      background: linear-gradient(135deg, var(--clr-accent), var(--clr-primary));
+      color: var(--clr-white);
+      padding: 2rem 2.8rem;
+      border-radius: var(--border-radius);
+      box-shadow:
+        0 0 18px rgba(92,219,149,0.85),
+        0 8px 28px rgba(0,0,0,0.15);
+      max-width: 760px;
+      width: 100%;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2em;
+      user-select:none;
+      margin-top: 4rem;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      will-change: transform;
+      cursor: default;
+      box-sizing: border-box;
+    }
+    .contact-info:hover,
+    .contact-info:focus-within {
+      outline-offset: 0;
+      transform: translateY(-8px) scale(1.04);
+      box-shadow:
+        0 0 35px rgba(92,219,149,0.95),
+        0 15px 48px rgba(0,0,0,0.23);
+    }
+    .contact-info h2 {
+      font-size: 2rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: 1.9px;
+      user-select:none;
+      text-shadow: 0 0 5px rgb(255 255 255 / 0.8);
+    }
+    .contact-info p {
+      margin: 0;
+      font-size: 1.22rem;
+      letter-spacing: 0.2px;
+    }
+
+    /* Button Styles */
+    .btn {
+      background: linear-gradient(90deg, #5cdb95 0%, #379683 100%);
+      color: var(--clr-white);
+      border: none;
+      border-radius: 34px;
+      cursor: pointer;
+      font-size: 1.15rem;
+      font-weight: 800;
+      padding: 1.1rem 3.2rem;
+      box-shadow:
+        0 6px 14px rgba(92,219,149,0.7),
+        0 12px 30px rgba(55,150,131,0.55);
+      max-width: 320px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      transition:
+        background 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+        box-shadow 0.4s ease;
+      box-sizing: border-box;
+      outline-offset: 3px;
+      user-select:none;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn:focus-visible,
+    .btn:hover {
+      background: linear-gradient(90deg, #379683 0%, #5cdb95 100%);
+      box-shadow:
+        0 9px 26px rgba(92,219,149,0.85),
+        0 18px 42px rgba(55,150,131,0.8);
+      transform: translateY(-5px);
+      outline: none;
+      text-decoration: none;
+      color: var(--clr-white);
+    }
+    .btn svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      user-select:none;
+    }
+    .btn:hover svg {
+      transform: translateX(6px);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 4rem;
+      padding: 1rem 0 2rem 0;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--clr-primary-dark);
+      user-select:none;
+      filter: drop-shadow(0 0 1px rgb(0 0 0 / 0.1));
+      text-shadow: 0 1px 8px rgba(255 255 255 / 0.3);
+      z-index: 10;
+      background: transparent;
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 580px) {
+      main {
+        width: 95%;
+        padding: 2.4rem 1.8rem 3rem 1.8rem;
+      }
+      h1 {
+        font-size: 2.7rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      h3 {
+        font-size: 1.1rem;
+        margin-top: 2rem;
+      }
+      p, ul, li {
+        font-size: 1rem;
+      }
+      .contact-info {
+        padding: 1.6rem 2rem;
+        font-size: 1.1rem;
+      }
+      .btn {
+        font-size: 1.05rem;
+        max-width: 100%;
+        padding: 0.95rem 2.4rem;
+      }
+      body::before, body::after {
+        display: none;
+      }
+    }
+    @media (max-width: 360px) {
+      h1 {
+        font-size: 2.3rem;
+      }
+      h2 {
+        font-size: 1.3rem;
+      }
+      .btn {
+        font-size: 1rem;
+        padding: 0.85rem 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main role="main" aria-label="Falcon Station Pvt Ltd Fresh Water Supply Services">
+    <h1>Falcon Station Pvt Ltd</h1>
+    <p><strong>Your Trusted Partner for Reliable Freshwater Supply at Karachi Port</strong></p>
+
+    <section>
+      <h2>Introduction</h2>
+      <p>Falcon Station Pvt Ltd provides reliable freshwater services to vessels at Karachi Port. With the KPT-registered <em>Al Abbas</em>, a 55-ton water barge, we guarantee compliant, timely delivery supporting maritime operations efficiently.</p>
+    </section>
+
+    <section>
+      <h2>Service Overview</h2>
+      <ul>
+        <li>On-demand freshwater delivery directly to vessels, anytime.</li>
+        <li>Flexible scheduling aligned with your vessel's arrival times.</li>
+        <li>Competitive pricing, offering you savings versus onshore alternatives.</li>
+        <li>Strict adherence to health, safety, and environmental regulations.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Target Market</h2>
+      <ul>
+        <li>Cargo Ships</li>
+        <li>Tankers (Oil & Gas)</li>
+        <li>Fishing Vessels</li>
+        <li>Passenger Vessels</li>
+        <li>Offshore Support Vessels</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Competitive Edge</h2>
+      <ul>
+        <li>Dedicated 55-ton water barge ensuring fast, dependable delivery.</li>
+        <li>Affordable pricing that reduces operational costs.</li>
+        <li>Certified marine staff guaranteeing safe and professional operations.</li>
+        <li>Optimized processes minimizing vessel downtime efficiently.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Barge Specifications</h2>
+      <ul>
+        <li><strong>Capacity:</strong> 55 tons of fresh water</li>
+        <li><strong>Registration:</strong> KPT Registered</li>
+        <li><strong>Crew:</strong> Certified marine staff</li>
+      </ul>
+      <h3>Licenses</h3>
+      <ul>
+        <li>KPT Operational License (Fresh Water Supply Service)</li>
+        <li>Barge Registration Certificate</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Conclusion</h2>
+      <p>Falcon Station Pvt Ltd is your reliable partner at Karachi Port, equipped with the 55-ton KPT-registered water barge <em>Al Abbas</em>, committed to quality service and competitive pricing for all freshwater supply needs.</p>
+    </section>
+
+    <section class="contact-info" aria-label="Contact information">
+      <h2>Contact Us</h2>
+      <p><strong>Karachi Port Manager:</strong> Saadat Ullah Khan</p>
+      <a href="tel:+923339235886" class="btn" aria-label="Call Saadat Ullah Khan" rel="nofollow noreferrer noopener" target="_blank" >
+        Call: 0333-9235886
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 3a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1H5.414l3.293 3.293a15.978 15.978 0 006.586 6.586L17 13.586V12a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1c-7.18 0-13-5.82-13-13z"/></svg>
+      </a>
+      <a href="mailto:sukhan34@gmail.com" class="btn" aria-label="Email Saadat Ullah Khan" rel="nofollow noreferrer noopener" target="_blank" >
+        Email: sukhan34@gmail.com
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.511L12 13 4 6.511V6h16zM4 18V8l7.444 6.667a1 1 0 001.112 0L20 8v10H4z"/></svg>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2024 Falcon Station Pvt Ltd - All Rights Reserved
+  </footer>
+</body>
+</html>
